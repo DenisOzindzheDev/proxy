@@ -1,12 +1,13 @@
 package main
 
 import (
-	"log"
 	"rproxy/internal/server"
+	logger "rproxy/pkg"
 )
 
 func main() {
+	logger.Infof("[PROXY]Starting proxy server...")
 	if err := server.Run(); err != nil {
-		log.Fatal(err)
+		logger.Errorf("error running server: %v", err)
 	}
 }
