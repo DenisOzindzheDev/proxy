@@ -13,6 +13,7 @@ type resource struct {
 	Destination_URL string
 }
 type configuration struct {
+	Mode   string
 	Server struct {
 		Host        string
 		Listen_port string
