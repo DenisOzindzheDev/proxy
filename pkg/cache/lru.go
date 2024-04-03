@@ -17,7 +17,11 @@ type LRU struct {
 }
 
 func NewLru(capacity int) *LRU {
-	return &LRU{capacity: capacity, items: make(map[string]*list.Element), queue: list.New()}
+	return &LRU{
+		capacity: capacity,
+		items:    make(map[string]*list.Element),
+		queue:    list.New(),
+	}
 }
 
 func (c *LRU) SetKey(key string, value interface{}) error {
@@ -27,7 +31,7 @@ func (c *LRU) SetKey(key string, value interface{}) error {
 		return nil
 	}
 	if c.queue.Len() == c.capacity {
-		logger.Warnf("[CACHE]capacity %d exceeded", c.capacity) //not sure about this
+		logger.Warnf("[CACHE]capacity %d exceeded removed %v", c.capacity, c.queue.Back().Value) //not sure about this
 		c.purge()
 	}
 
