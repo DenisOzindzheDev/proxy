@@ -4,15 +4,18 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
-	logger "rproxy/pkg"
+	logger "rproxy/pkg/logger"
 	"strings"
 	"time"
 )
 
+// Creates a new proxy instance
 func NewProxy(target *url.URL) *httputil.ReverseProxy {
 	proxy := httputil.NewSingleHostReverseProxy(target)
 	return proxy
 }
+
+// Handler that returns requests to the specified upstreams
 func ProxyRequestHandler(proxy *httputil.ReverseProxy, url *url.URL, endpoint string) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		logger.Infof("[PROXY] Request recived from %s at %v", r.URL.String(), time.Now().UTC())

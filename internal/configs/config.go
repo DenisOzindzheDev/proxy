@@ -22,6 +22,7 @@ type configuration struct {
 
 var Config *configuration
 
+// Returns a configuration object that represents the configuration of the application
 func NewConfig() (*configuration, error) {
 	viper.AddConfigPath("data")
 	viper.SetConfigName("config")

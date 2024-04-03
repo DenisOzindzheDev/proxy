@@ -2,7 +2,7 @@ package main
 
 import (
 	"rproxy/internal/server"
-	logger "rproxy/pkg"
+	logger "rproxy/pkg/logger"
 )
 
 func main() {
