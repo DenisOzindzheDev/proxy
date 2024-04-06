@@ -12,7 +12,7 @@ import (
 func ping(w http.ResponseWriter, r *http.Request) {
 	responses.StatusOk(w, map[string]string{
 		"status":  "OK",
-		"Message": "Im Alive",
+		"Message": "Here is a random message",
 	})
 	logger.Infof("[PROXY] ping health check request from %s", r.RemoteAddr)
 }
